@@ -1,15 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { SiTwitter, SiLinkedin, SiGithub } from "react-icons/si";
+import { SiX, SiLinkedin, SiGithub } from "react-icons/si";
 import { Globe } from "lucide-react";
 
 const socialLinks = [
   {
     name: "Twitter",
-    icon: SiTwitter,
+    icon: SiX,
     handle: "@robertdickinson",
     description: "Follow for SWMM insights",
     url: "https://twitter.com",
-    color: "text-[#1DA1F2]",
+    color: "text-foreground",
   },
   {
     name: "LinkedIn",

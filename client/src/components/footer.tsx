@@ -1,4 +1,4 @@
-import { SiTwitter, SiLinkedin, SiGithub } from "react-icons/si";
+import { SiX, SiLinkedin, SiGithub } from "react-icons/si";
 import { Globe, Mail } from "lucide-react";
 
 export function Footer() {
@@ -49,7 +49,7 @@ export function Footer() {
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                 data-testid="link-footer-twitter"
               >
-                <SiTwitter className="h-5 w-5" />
+                <SiX className="h-5 w-5" />
                 <span>Twitter</span>
               </a>
               <a
