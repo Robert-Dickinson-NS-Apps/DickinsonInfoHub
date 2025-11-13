@@ -3,10 +3,18 @@
 ## Overview
 Professional portfolio web application for Robert Dickinson, showcasing expertise in Storm Water Management Modeling (SWMM) and environmental engineering. Features an AI-powered chat assistant using DeepSeek for visitor interactions.
 
-**Current State:** MVP complete with all core features implemented and tested
-**Last Updated:** November 11, 2025
+**Current State:** Enhanced with database persistence, project gallery management, and upcoming blog/resume/analytics features
+**Last Updated:** November 13, 2025
 
 ## Recent Changes
+- **November 13, 2025**: Phase 2 - Database & Project Management
+  - Created PostgreSQL database with Drizzle ORM
+  - Implemented full schema for projects, articles, chat history, resume, and analytics
+  - Built complete Projects CRUD API with Express routes
+  - Migrated hardcoded projects to database-driven system
+  - Created admin interface for managing projects at /admin/projects
+  - Projects section now dynamically fetches from database with featured filtering
+  - Seeded database with sample SWMM projects
 - **November 11, 2025**: Complete MVP implementation
   - Designed and implemented SWMM-themed water/engineering color scheme
   - Built responsive Hero section with generated SWMM infrastructure background
@@ -32,9 +40,11 @@ Professional portfolio web application for Robert Dickinson, showcasing expertis
 
 ### Backend Stack
 - **Runtime:** Node.js with Express
+- **Database:** PostgreSQL via Neon (Replit managed)
+- **ORM:** Drizzle ORM with Neon HTTP driver
 - **AI Integration:** DeepSeek via OpenRouter (Replit AI Integrations)
 - **Error Handling:** p-retry with exponential backoff for rate limiting
-- **Validation:** Zod schemas
+- **Validation:** Zod schemas with drizzle-zod
 
 ### Design System
 **Color Theme:** SWMM water/engineering blue palette
@@ -75,9 +85,14 @@ Professional portfolio web application for Robert Dickinson, showcasing expertis
 - Platform-specific icons and descriptions
 
 ### 5. Projects Section
-- 2-column grid of featured SWMM projects
-- Each with title, description, technology tags
-- External links to semm5.org for project details
+- **Database-driven** project gallery with dynamic content
+- 2-column grid displaying featured projects only
+- Each with title, description, technology badges, external links
+- **Admin Interface** at /admin/projects for full CRUD operations:
+  - Create, edit, delete projects
+  - Set featured status and display order
+  - Add images, technologies, descriptions
+  - Real-time updates with TanStack Query cache invalidation
 
 ### 6. AI Chat Assistant
 - Fixed bottom-right floating toggle button
