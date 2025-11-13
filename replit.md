@@ -3,10 +3,27 @@
 ## Overview
 Professional portfolio web application for Robert Dickinson, showcasing expertise in Storm Water Management Modeling (SWMM) and environmental engineering. Features an AI-powered chat assistant using DeepSeek for visitor interactions.
 
-**Current State:** Enhanced with database persistence, project gallery management, and upcoming blog/resume/analytics features
+**Current State:** Enhanced with database persistence, project gallery management, complete blog system with markdown support, and upcoming resume/analytics features
 **Last Updated:** November 13, 2025
 
 ## Recent Changes
+- **November 13, 2025**: Phase 3 - Blog/Articles System (COMPLETE)
+  - Built complete blog CRUD API with published filtering (GET /api/articles, GET /api/articles/:slug, GET/POST/PATCH/DELETE /api/admin/articles)
+  - Created blog listing page at /blog displaying all published articles
+  - Implemented individual article pages at /blog/:slug with markdown rendering using react-markdown + remark-gfm
+  - **Production-ready state machine pattern for article routing:**
+    - useArticleSlugState hook manages finite state machine (loading/ready/notFound)
+    - Prevents empty slug API calls during Wouter route transitions
+    - ArticleContent only mounts when slug is guaranteed non-empty
+    - Eliminates render loops and stray /api/articles/ requests
+  - Built admin interface at /admin/articles for full CRUD operations:
+    - Create, edit, delete articles with real-time validation
+    - Publish/unpublish functionality with publishedAt timestamps
+    - Markdown content editor with rich formatting support
+    - Slug-based routing with unique constraint
+  - Added Blog navigation link to main nav and mobile menu
+  - Seeded database with 3 SWMM-themed technical articles
+  - Comprehensive cache invalidation for both /api/articles and individual article queries
 - **November 13, 2025**: Phase 2 - Database & Project Management (COMPLETE)
   - Created PostgreSQL database with Drizzle ORM
   - Implemented full schema for projects, articles, chat history, resume, and analytics
