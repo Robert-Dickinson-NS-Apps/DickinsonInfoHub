@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -54,6 +55,16 @@ export function Navigation({ onChatClick }: NavigationProps) {
             >
               Projects
             </Button>
+            <Link href="/blog">
+              <a>
+                <Button
+                  variant="ghost"
+                  data-testid="link-blog"
+                >
+                  Blog
+                </Button>
+              </a>
+            </Link>
             <Button
               variant="ghost"
               onClick={() => scrollToSection("contact")}
@@ -112,6 +123,18 @@ export function Navigation({ onChatClick }: NavigationProps) {
             >
               Projects
             </Button>
+            <Link href="/blog">
+              <a className="block">
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start"
+                  onClick={() => setMobileMenuOpen(false)}
+                  data-testid="link-blog-mobile"
+                >
+                  Blog
+                </Button>
+              </a>
+            </Link>
             <Button
               variant="ghost"
               className="w-full justify-start"

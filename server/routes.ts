@@ -162,6 +162,103 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Articles API
+  // Public routes - only show published articles
+  app.get("/api/articles", async (req, res) => {
+    try {
+      const articles = await storage.getArticles(true); // Published only
+      res.json(articles);
+    } catch (error) {
+      console.error("Error fetching articles:", error);
+      res.status(500).json({ error: "Failed to fetch articles" });
+    }
+  });
+
+  app.get("/api/articles/:slug", async (req, res) => {
+    try {
+      const article = await storage.getArticleBySlug(req.params.slug);
+      if (!article) {
+        return res.status(404).json({ error: "Article not found" });
+      }
+      // Only return if published
+      if (!article.published) {
+        return res.status(404).json({ error: "Article not found" });
+      }
+      res.json(article);
+    } catch (error) {
+      console.error("Error fetching article:", error);
+      res.status(500).json({ error: "Failed to fetch article" });
+    }
+  });
+
+  // Admin routes - manage all articles (TODO: add authentication)
+  app.get("/api/admin/articles", async (req, res) => {
+    try {
+      const articles = await storage.getArticles(false); // All articles
+      res.json(articles);
+    } catch (error) {
+      console.error("Error fetching articles:", error);
+      res.status(500).json({ error: "Failed to fetch articles" });
+    }
+  });
+
+  app.get("/api/admin/articles/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const article = await storage.getArticle(id);
+      if (!article) {
+        return res.status(404).json({ error: "Article not found" });
+      }
+      res.json(article);
+    } catch (error) {
+      console.error("Error fetching article:", error);
+      res.status(500).json({ error: "Failed to fetch article" });
+    }
+  });
+
+  app.post("/api/admin/articles", async (req, res) => {
+    try {
+      const data = insertArticleSchema.parse(req.body);
+      const article = await storage.createArticle(data);
+      res.status(201).json(article);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: "Invalid request", details: error.errors });
+      }
+      console.error("Error creating article:", error);
+      res.status(500).json({ error: "Failed to create article" });
+    }
+  });
+
+  app.patch("/api/admin/articles/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const data = insertArticleSchema.partial().parse(req.body);
+      const article = await storage.updateArticle(id, data);
+      if (!article) {
+        return res.status(404).json({ error: "Article not found" });
+      }
+      res.json(article);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: "Invalid request", details: error.errors });
+      }
+      console.error("Error updating article:", error);
+      res.status(500).json({ error: "Failed to update article" });
+    }
+  });
+
+  app.delete("/api/admin/articles/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      await storage.deleteArticle(id);
+      res.status(204).send();
+    } catch (error) {
+      console.error("Error deleting article:", error);
+      res.status(500).json({ error: "Failed to delete article" });
+    }
+  });
+
   // Chat API
   app.post("/api/chat", async (req, res) => {
     try {

@@ -7,14 +7,29 @@ Professional portfolio web application for Robert Dickinson, showcasing expertis
 **Last Updated:** November 13, 2025
 
 ## Recent Changes
-- **November 13, 2025**: Phase 2 - Database & Project Management
+- **November 13, 2025**: Phase 2 - Database & Project Management (COMPLETE)
   - Created PostgreSQL database with Drizzle ORM
   - Implemented full schema for projects, articles, chat history, resume, and analytics
-  - Built complete Projects CRUD API with Express routes
+  - Built complete Projects CRUD API with Express routes (GET all, GET featured, GET by ID, POST, PATCH, DELETE)
   - Migrated hardcoded projects to database-driven system
-  - Created admin interface for managing projects at /admin/projects
+  - Created admin interface for managing projects at /admin/projects with full CRUD operations
   - Projects section now dynamically fetches from database with featured filtering
   - Seeded database with sample SWMM projects
+  - **Implemented production-ready Multer file upload system:**
+    - Disk storage at server/uploads with static file serving at /uploads
+    - 5MB file size limit with validation
+    - Image type validation (JPEG, PNG, GIF, WebP)
+    - Unique filename generation (timestamp + nanoid)
+    - Client-side validation (size, type) with progress indicator and image preview
+    - Hybrid approach supporting both file upload and URL input
+    - **Comprehensive error handling with structured JSON responses:**
+      - Route-level error handling with switch statements
+      - Centralized error middleware to catch early Multer failures
+      - All error paths return JSON (no HTML leaks)
+      - User-friendly error messages (FILE_TOO_LARGE, INVALID_FILE_TYPE, NO_FILE, UPLOAD_ERROR)
+      - Proper toast notifications in admin UI
+    - Real-time cache invalidation for both /api/projects and /api/projects/featured
+    - Error states and loading indicators throughout UI
 - **November 11, 2025**: Complete MVP implementation
   - Designed and implemented SWMM-themed water/engineering color scheme
   - Built responsive Hero section with generated SWMM infrastructure background
