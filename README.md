@@ -1,40 +1,37 @@
-# 🐊 GatorSWMM
+# 📚 Dickinson Info Hub
 
-![SWMM5](https://img.shields.io/badge/SWMM5-Learning%20Tool-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-97%25-3178C6)
+![TypeScript](https://img.shields.io/badge/TypeScript-95%25-3178C6)
 ![Vite](https://img.shields.io/badge/Build-Vite-646CFF)
 ![Tailwind](https://img.shields.io/badge/Style-Tailwind-38BDF8)
+![AI Chat](https://img.shields.io/badge/Feature-AI%20Assistant-8A2BE2)
 ![Replit](https://img.shields.io/badge/Live-Replit-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
 
-An interactive, **gator-themed learning tool for the EPA Storm Water Management Model (SWMM5)** — explore core stormwater modeling concepts through guides, quizzes, and an interactive game.
+A personal information hub and blog platform for **project information, articles, and professional inquiries** — featuring a markdown-based blog, an admin interface, and an AI-powered chat assistant.
 
-🔗 **Live app:** [replit.com/@robertdickinson/GatorSWMM](https://replit.com/@robertdickinson/GatorSWMM)
+🔗 **Live app:** [replit.com/@robertdickinson/DickinsonInfoHub](https://replit.com/@robertdickinson/DickinsonInfoHub)
 
 ---
 
 ## About
 
-GatorSWMM is an educational web app that makes learning SWMM5 engaging. It combines an **interactive guide**, a **quiz system** with curated questions and images, and an **interactive game for exploring SWMM concepts** — all wrapped in a University of Florida "Gator" color theme. It is part of the SWMM5Wiki educational effort.
-
-This project is part of Robert Dickinson's broader SWMM5 tooling and education ecosystem.
+Dickinson Info Hub is a web application that centralizes project information and articles in one place. It includes a **complete blog system with markdown support**, an **administrative interface** for managing articles, and an **AI-powered chat assistant** for handling professional inquiries. Content is persisted via an integrated database for projects, articles, and chat history.
 
 ## Features
 
-- 🎓 Interactive guide to SWMM5 concepts
-- ❓ Quiz content with questions and illustrative images
-- 🎮 Interactive game for exploring stormwater modeling
-- 🐊 Gator-themed UI
-- ☁️ Hosted on Replit
+- 📝 Full blog system with markdown support
+- 🔧 Admin interface for managing articles
+- 🤖 AI-powered chat assistant for professional inquiries
+- 🗄️ Database-backed storage for projects, articles, and chats
 
 ## What's Inside
 
 | Folder | Purpose |
 |---|---|
 | `client/` | Front-end application (TypeScript, Vite, Tailwind CSS) |
-| `server/` | Back-end logic |
+| `server/` | Back-end logic, blog system, and AI chat |
 | `shared/` | Shared types/code used by client and server |
-| `attached_assets/` | Quiz questions and learning images |
+| `attached_assets/` | Supporting assets |
+| `design_guidelines.md` | Project design notes |
 
 ## Tech Stack
 
@@ -45,8 +42,8 @@ This project is part of Robert Dickinson's broader SWMM5 tooling and education e
 ## Getting Started
 
 ```bash
-git clone https://github.com/Robert-Dickinson-NS-Apps/GatorSWMM.git
-cd GatorSWMM
+git clone https://github.com/Robert-Dickinson-NS-Apps/DickinsonInfoHub.git
+cd DickinsonInfoHub
 npm install
 npm run dev
 ```
@@ -55,4 +52,4 @@ npm run dev
 
 ## License
 
-Released under the **MIT License**.
+Private repository — all rights reserved.
