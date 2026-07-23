@@ -52,4 +52,4 @@ npm run dev
 
 ## License
 
-Private repository — all rights reserved.
+Released under the MIT License.
